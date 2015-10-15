@@ -4,7 +4,6 @@ date: '2014-05-21'
 tags: ['android', 'wtf?']
 categories: ['code']
 layout: 'post'
-permalink: '/posts/color-resources-must-be-resolved'
 ---
 
 I recently found some rather unfortunate code in an Android project I was working with:

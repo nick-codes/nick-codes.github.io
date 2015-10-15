@@ -5,7 +5,6 @@ description: Gradle has some pretty useful plugins
 tags: ['gradle', 'plugin']
 categories: ['build']
 layout: 'post'
-permalink: '/posts/the-good-side-of-gradle'
 ---
 
 While it's true that [I think buck is

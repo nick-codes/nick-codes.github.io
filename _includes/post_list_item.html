@@ -1,0 +1,19 @@
+<li class="row">
+
+  <div class="header">
+
+    <h2 class="title">
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </h2>
+
+    <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+
+  </div>
+
+  <p>
+  {{ post.excerpt }}
+  </p>
+
+  <a class="button" href="{{post.url | prepend: site.baseurl }}">read more...</a>
+
+</li>

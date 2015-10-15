@@ -10,7 +10,9 @@ layout: default
   <p>
     I write code by day, and try to make it suck less by night.
 
-    You can check out my latest musings below, or take a poke through the archive, tags, or categories to find some content you might be interested in.
+    You can check out my latest musings below, or take a poke through the 
+    <a href="/archive/">archive</a> or
+    <a href="/tags/">tags</a> to find some content you might be interested in.
   </p>
 
   <hr/>
@@ -19,25 +21,7 @@ layout: default
 
   <ul class="post-list">
     {% for post in paginator.posts %}
-      <li class="row">
-
-        <div class="header">
-
-          <h2 class="title">
-            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          </h2>
-
-          <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
-
-        </div>
-
-        <p>
-        {{ post.excerpt }}
-        </p>
-
-        <a class="button" href="{{post.url | prepend: site.baseurl }}">read more...</a>
-
-      </li>
+      {% include post_list_item.html %}
     {% endfor %}
   </ul>
 

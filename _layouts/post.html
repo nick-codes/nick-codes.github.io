@@ -12,4 +12,24 @@ layout: default
     {{ content }}
   </article>
 
+  <div class="post-nav">
+  	<ul>
+	  {% if page.previous.url %}
+	    <li>
+	    	<a class="button prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+	    </li>
+	  {% endif %}
+	  {% if page.previous.url or page.next.url %}
+	  	<li>
+	    	<a class="button archive" href="/archive/">Archive</a>
+	    </li>
+	  {% endif %}
+	  {% if page.next.url %}
+	    <li>
+	    	<a class="button next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+	    </li>
+	  {% endif %}
+	</ul>
+  </div>
+
 </div>

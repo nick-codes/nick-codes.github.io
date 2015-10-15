@@ -5,7 +5,6 @@ description: 'A discussion of how similar Swift and Scala are.'
 tags: [swift, scala]
 categories: ['code']
 layout: 'post'
-permalink: '/posts/swift-inspired-by-scala'
 ---
 
 As part of WWDC this year in San Francisco,

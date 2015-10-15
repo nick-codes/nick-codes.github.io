@@ -4,7 +4,6 @@ date: '2014-12-21'
 description: A brief discussion of my journey into the world of Go.
 tags: [Go,Java,Scala,awesome]
 layout: 'post'
-permalink: '/posts/left-turn-to-go'
 ---
 
 Recently, I have taken a bit of a left turn in terms of my career

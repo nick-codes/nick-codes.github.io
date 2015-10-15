@@ -4,7 +4,6 @@ date: '2014-05-25'
 tags: ['android', 'ListAdapter', 'pattern', 'View Holder']
 categories: ['code']
 layout: 'post'
-permalink: '/posts/reusing-listadapters'
 ---
 
 In [a previous

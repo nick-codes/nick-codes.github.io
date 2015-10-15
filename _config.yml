@@ -10,6 +10,22 @@ github_username:  nick-codes
 
 paginate: 10
 paginate_path: "/posts/page:num/"
+permalink: /posts/:title
 
 # Build settings
 markdown: kramdown
+
+gems:
+  - jekyll-archives
+
+jekyll-archives:
+  enabled:
+    - year
+  permalinks:
+    year: '/archive/:year/'
+    month: '/archive/:year/:month/'
+    day: '/archive/:year/:month/:day/'
+    tag: '/archive/tag/:name/'
+    category: '/archive/category/:name/'
+  layouts:
+    year: archive

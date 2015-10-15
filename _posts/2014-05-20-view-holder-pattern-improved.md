@@ -4,7 +4,6 @@ date: '2014-05-20'
 tags: ['android','pattern','View Holder']
 categories: ['code']
 layout: 'post'
-permalink: '/posts/view-holder-pattern-improved'
 ---
 
 Most Android programmers know that to get buttery smooth list

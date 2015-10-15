@@ -8,7 +8,6 @@ widgets :
 tags: ['buck', 'awesome']
 categories: ['build']
 layout: 'post'
-permalink: '/posts/why-buck-is-awesome'
 ---
 
 Let's face it. <a href="http://facebook.github.io/buck/">Buck is Awesome!</a>
