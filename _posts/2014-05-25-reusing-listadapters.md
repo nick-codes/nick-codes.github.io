@@ -34,7 +34,7 @@ article](http://nick.codes/posts/view-holder-pattern-improved/), we
 ended up with a ListAdapter which had a `getView()` method that looked
 like this:
 
-~~~
+~~~ java
 // Inside the adapter
 public void getView(final int position, final View convertView, final ViewGroup parent) {
   ViewHolder holder;
@@ -62,7 +62,7 @@ We begin by building a base class for our ViewHolders which has the
 right interface needed by our `getView()` method shown above. It looks
 like this:
 
-~~~
+~~~ java
 public abstract class ReusableViewHolder<T> {
 
 	public ReusableViewHolder(View view) {
@@ -83,7 +83,7 @@ build this holder. This is quite simple, as we simply delegate the
 ReusableViewHolder<T> construction to the subclass using an abstract
 method. This gives us code for the ListAdapter that looks like this:
 
-~~~
+~~~ java
 @Override
 public View getView(final int position, final View convertView, final ViewGroup parent) {
 	ReusableViewHolder<T> holder;

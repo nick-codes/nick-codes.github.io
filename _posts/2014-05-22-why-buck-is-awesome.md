@@ -188,7 +188,7 @@ structures. In most cases I now have simple declarations like for
 library projects. Apps are only slightly more complicated for
 specifying the AndroidManifest.xml file.
 
-```python
+~~~ python
 android_library_project(
     name = 'some-library-project',
     package = 'some.library.project.package',
