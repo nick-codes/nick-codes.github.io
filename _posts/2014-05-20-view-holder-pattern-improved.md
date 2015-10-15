@@ -3,6 +3,8 @@ title: 'View Holder Pattern Improved'
 date: '2014-05-20'
 tags: ['android','pattern','View Holder']
 categories: ['code']
+layout: 'post'
+permalink: '/posts/view-holder-pattern-improved'
 ---
 
 Most Android programmers know that to get buttery smooth list
@@ -144,5 +146,3 @@ always prefer when my tools can tell me I am making a mistake.
 
 Until next time, try to make your code suck less using the
 "View Holder Pattern Improved."
-
-[Comments? <img src="{{urls.media}}/gplus.png"/>](https://plus.google.com/113986198078433877168/posts/PjsPjcGHAB2)

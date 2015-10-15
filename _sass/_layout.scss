@@ -166,7 +166,8 @@
 }
 
 .page-heading {
-    font-size: 20px;
+    font-size: $large-font-size;
+    margin-top: 20px;
 }
 
 .post-list {
@@ -175,7 +176,12 @@
 
     > li {
         margin-bottom: $spacing-unit;
+        clear:both;
     }
+}
+
+.post-list .button {
+    float:right;
 }
 
 .post-meta {
@@ -233,4 +239,8 @@
             font-size: 18px;
         }
     }
+}
+
+hr {
+    margin: $spacing-unit 0px $spacing-unit 0px;
 }

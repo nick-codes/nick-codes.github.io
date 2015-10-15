@@ -3,6 +3,8 @@ title: 'Reusing ListAdapters'
 date: '2014-05-25'
 tags: ['android', 'ListAdapter', 'pattern', 'View Holder']
 categories: ['code']
+layout: 'post'
+permalink: '/posts/reusing-listadapters'
 ---
 
 In [a previous
@@ -116,5 +118,3 @@ repository on
 Github](http://github.com/nickpalmer/ReusableListAdapter.git)
 
 Make your code suck less by using generics to facilitate code reuse!
-
-[Comments? <img src="{{urls.media}}/gplus.png"/>](https://plus.google.com/113986198078433877168/posts/WAjuDKHLfDU)

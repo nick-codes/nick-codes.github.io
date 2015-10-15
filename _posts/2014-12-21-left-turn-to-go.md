@@ -3,11 +3,14 @@ title: 'Left turn to Go'
 date: '2014-12-21'
 description: A brief discussion of my journey into the world of Go.
 tags: [Go,Java,Scala,awesome]
+layout: 'post'
+permalink: '/posts/left-turn-to-go'
 ---
 
 Recently, I have taken a bit of a left turn in terms of my career
 path.  I had been spending a great deal of my professional time
-working with [Android](http://www.android.com/), [Java](https://java.com), and [Bluetooth LE](http://en.wikipedia.org/wiki/Bluetooth_low_energy), while doing some
+working with [Android](http://www.android.com/), [Java](https://java.com),
+and [Bluetooth LE](http://en.wikipedia.org/wiki/Bluetooth_low_energy), while doing some
 [Scala](http://www.scala-lang.org/) development for backend
 services. To be honest, I was a little burned out on working with
 Android, and the quite unstable Bluetooth LE stack on that platform. I

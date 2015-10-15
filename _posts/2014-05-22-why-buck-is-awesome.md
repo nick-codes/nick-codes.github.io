@@ -7,6 +7,8 @@ widgets :
     theme : desert
 tags: ['buck', 'awesome']
 categories: ['build']
+layout: 'post'
+permalink: '/posts/why-buck-is-awesome'
 ---
 
 Let's face it. <a href="http://facebook.github.io/buck/">Buck is Awesome!</a>
@@ -267,5 +269,3 @@ the Buck homepage</a>, so check it out to see it in action. It's awesome!
 
 In conclusion, Buck is awesome. Use it to make your build system
 suck less.
-
-<a href="https://plus.google.com/113986198078433877168/posts/Cyh9XMv9EmU">Comments? <img src="{{urls.media}}/gplus.png"/></a>

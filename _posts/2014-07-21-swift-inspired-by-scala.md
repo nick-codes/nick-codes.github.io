@@ -4,9 +4,9 @@ date: '2014-07-21'
 description: 'A discussion of how similar Swift and Scala are.'
 tags: [swift, scala]
 categories: ['code']
+layout: 'post'
+permalink: '/posts/swift-inspired-by-scala'
 ---
-
-<div class="summary" markdown="1">
 
 As part of WWDC this year in San Francisco,
 [Apple](http://apple.com) announced a [new programming language for
@@ -18,8 +18,6 @@ guide](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Co
 and I was surprised to see that the language has been heavily
 influenced by [Scala](http://www.scala-lang.org/). But then, what language isn't being heavily influenced by Scala lately? Even Java 8 has added Scala like features in the form
 of [Lambda expressions](https://leanpub.com/whatsnewinjava8/read#leanpub-auto-lambda-expressions).
-
-</div>
 
 Never the less, I was pleased with many of the choices that Swift has
 made. It is certainly a huge leap forward from Objective-C, and a long
@@ -171,5 +169,3 @@ in July 2011, so we can expect Google to add Java 8 features in 2017!
 ;)
 
 I am looking forward to using Swift to make my iOS code suck less to write.
-
-[Comments? <img src="{{urls.media}}/gplus.png"/>]()

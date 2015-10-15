@@ -4,6 +4,8 @@ date: '2014-08-08'
 description: Gradle has some pretty useful plugins
 tags: ['gradle', 'plugin']
 categories: ['build']
+layout: 'post'
+permalink: '/posts/the-good-side-of-gradle'
 ---
 
 While it's true that [I think buck is
@@ -51,5 +53,3 @@ which makes it easier to install particular builds on particular
 devices and run commands against them.
 
 What plugins are you using to make your builds suck less?
-
-[Comments? <img src="{{urls.media}}/gplus.png"/>]()

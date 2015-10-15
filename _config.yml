@@ -5,8 +5,11 @@ description: > # this means to ignore newlines until "baseurl:"
   Teaching you to write code that doesn't suck.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://nick.codes" # the base hostname & protocol for your site
-twitter_username: nick_codes
+# twitter_username: nick_codes
 github_username:  nick-codes
+
+paginate: 10
+paginate_path: "/posts/page:num/"
 
 # Build settings
 markdown: kramdown
