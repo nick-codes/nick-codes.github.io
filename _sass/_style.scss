@@ -70,3 +70,43 @@
 	color: white;
     background: none;
 }
+
+.table-bordered{
+	border:1px solid $grey-color-medium;
+	border-collapse:separate;
+	*border-collapse:collapse;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+
+table {
+	max-width:100%;
+	background: $grey-color-xtra-light;
+	border-collapse:collapse;
+	border-spacing:0;
+
+	tr:nth-child(odd) {
+		background-color: $grey-color-light;
+	}
+
+	th, td {
+		padding:8px;
+		line-height:20px;
+		text-align:left;
+		vertical-align:top;
+		border-bottom:1px solid $grey-color-medium;
+		border-right:1px solid $grey-color-medium;
+	}
+
+	th {
+		font-weight: bold;
+	}
+
+	tr:hover {
+		background-color: $grey-color-medium;
+	}
+
+}
+
+
