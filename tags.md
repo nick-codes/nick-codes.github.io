@@ -3,24 +3,20 @@ layout: page
 title: Tags
 permalink: /tags/
 ---
-
-{% capture tags %}{% for tag in site.tags %}{{ tag[0] }},{% endfor %}{% endcapture %}
-{% assign sortedtags = tags | split:',' | strip | sort %}
-
 <div class="tags">
   <ul>
-  {% for tag in sortedtags %}
+  {% for tag in site.tags %}
     <li>
-      <a href="#{{ tag }}">{{ tag }} ({{ site.tags[tag].size }})</a>
+      <a href="#{{ tag[0] }}">{{ tag[0] }} ({{ tag[1].size }})</a>
     </li>
   {% endfor %}
   </ul>
 </div>
 
-{% for tag in sortedtags %}
-  <h3 id="{{ tag }}">{{ tag }} ({{ site.tags[tag].size }})</h3>
+{% for tag in site.tags %}
+  <h3 id="{{ tag[0] }}">{{ tag[0] }} ({{ tag[1].size }})</h3>
   <ul>
-  {% for post in site.tags[tag] %}
+  {% for post in tag[1] %}
     {% if post %}
       <li>
         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

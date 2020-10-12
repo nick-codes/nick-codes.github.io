@@ -15,7 +15,18 @@ permalink: /posts/:title
 # Build settings
 markdown: kramdown
 
-gems:
+jekyll-archives:
+#  enabled: all
+#  layout: archive
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    day: '/:year/:month/:day/'
+    tag: '/tag/:name/'
+    category: '/category/:name/'
+
+plugins:
+  - jekyll-archives
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate

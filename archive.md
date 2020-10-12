@@ -5,16 +5,13 @@ permalink: /archive/
 ---
 
 <div class="archive">
-
 {% for post in site.posts %}
 	{% assign year = post.date | date: '%Y' %}
 	{% assign nextyear = post.next.date | date : '%Y' %}
 	{% assign month = post.date | date: '%b' %}
 	{% assign nextmonth = post.next.date | date : '%b' %}
-
 	{% if year != nextyear %}
-
-		{% if post.previous %}
+		{% if forloop.first != true %}
 			</ul></li></ul>
 		{% endif %}
 
@@ -26,7 +23,7 @@ permalink: /archive/
 				</li>
 	{% else %}
 		{% if month != nextmonth %}
-			</ul></li><li>{{ month }}<ul>
+            </ul></li><li>{{ month }}<ul>
 				<li>
 					<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 				</li>
