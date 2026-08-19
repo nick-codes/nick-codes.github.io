@@ -62,6 +62,26 @@ Two Node scripts wrap `vite build`:
 
 `src/generated/` is gitignored; it is rebuilt on every `dev` and `build`.
 
+## Images
+
+| File | Purpose |
+|---|---|
+| `public/og.jpg` | 1200×630 social card (Open Graph / Twitter) |
+| `public/nick-palmer.jpg` | 480×480 portrait used on `/about` and in the JSON-LD |
+| `public/favicon.svg` | Browser tab icon |
+| `tools/og-card.html` | Editable source for the social card |
+| `tools/og-avatar-source.jpg` | 1024×1024 portrait, vendored from Gravatar |
+
+The portrait originates from the Gravatar for `nick@sluggardy.net`. It is
+vendored into the repo rather than hotlinked so the site does not depend on
+Gravatar being reachable, and so the image cannot change without a commit.
+
+To re-render the social card after editing `tools/og-card.html`:
+
+```bash
+npx playwright screenshot --viewport-size=1200,630 tools/og-card.html public/og.jpg
+```
+
 ## Tailwind configuration
 
 There is deliberately **no `tailwind.config.js`**. Tailwind 4 is configured

@@ -35,11 +35,20 @@ export default function About() {
       />
 
       <Container className="pt-16 pb-12 sm:pt-20">
-        <div className="max-w-3xl">
-          <Eyebrow>About</Eyebrow>
-          <h1 className="text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-            I have spent twenty years being the person they call.
-          </h1>
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-10">
+          <img
+            src="/nick-palmer.jpg"
+            alt="Nick Palmer"
+            width="480"
+            height="480"
+            className="h-28 w-28 shrink-0 rounded-full object-cover ring-4 ring-rule sm:h-36 sm:w-36"
+          />
+          <div className="max-w-2xl">
+            <Eyebrow>About</Eyebrow>
+            <h1 className="text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
+              I have spent twenty years being the person they call.
+            </h1>
+          </div>
         </div>
       </Container>
 

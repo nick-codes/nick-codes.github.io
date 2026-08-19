@@ -62,6 +62,20 @@ be pointed at, leave it out and ask.
 - **Legacy redirects** in `src/App.jsx` (`/archive`, `/categories`, `/tags`,
   `/tag/:name`, `/category/:name` → `/writing`).
 
+## Images
+
+`public/og.jpg` (1200×630 social card) and `public/nick-palmer.jpg` (portrait)
+are generated, not hand-drawn. Source is `tools/og-avatar-source.jpg`, the
+Gravatar for `nick@sluggardy.net`, vendored so the site never depends on
+Gravatar at request time. The card's layout lives in `tools/og-card.html`; see
+README for the re-render command.
+
+If you regenerate these with a headless browser: a page built via `setContent`
+has **no base URL**, so a `file://` image `src` silently fails and you get a
+blank canvas that still reports `complete === true` and a non-zero
+`naturalWidth`. Inline the source as a data URI, and verify by sampling actual
+pixels rather than trusting the load flags.
+
 ## Verifying changes
 
 `vite preview` has its own SPA fallback, which masks broken deep links. To test
