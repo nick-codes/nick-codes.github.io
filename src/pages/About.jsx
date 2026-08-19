@@ -1,4 +1,5 @@
 import Seo from '../components/Seo'
+import { metaFor } from '../content/routes'
 import { Container, Section, Eyebrow, BookCall } from '../components/ui'
 import { site } from '../content/site'
 
@@ -28,11 +29,7 @@ const recognition = [
 export default function About() {
   return (
     <>
-      <Seo
-        title="About"
-        path="/about"
-        description="Nick Palmer — twenty years across roughly twenty startups, four of them as principal engineer in regulated fintech. PhD in distributed systems from VU Amsterdam. Based in Houston."
-      />
+      <Seo {...metaFor('/about')} />
 
       <Container className="pt-16 pb-12 sm:pt-20">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-10">

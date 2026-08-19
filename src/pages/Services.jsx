@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Seo from '../components/Seo'
+import { metaFor } from '../content/routes'
 import { Container, Section, Eyebrow, BookCall } from '../components/ui'
 import { site } from '../content/site'
 import { services } from '../content/services'
@@ -20,11 +21,7 @@ export default function Services() {
 
   return (
     <>
-      <Seo
-        title="Services"
-        path="/services"
-        description="Four fixed-scope engagements: a $500 engineering diagnostic, a $2,500 AI automation sprint, a $3,500–$5,000 engineering rescue sprint, and fractional CTO work from $6,000/month."
-      />
+      <Seo {...metaFor('/services')} />
 
       <Container className="pt-16 pb-12 sm:pt-20">
         <div className="max-w-3xl">

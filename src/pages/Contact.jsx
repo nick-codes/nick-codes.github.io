@@ -1,4 +1,5 @@
 import Seo from '../components/Seo'
+import { metaFor } from '../content/routes'
 import { Container, Eyebrow, BookCall } from '../components/ui'
 import { site } from '../content/site'
 
@@ -12,11 +13,7 @@ const channels = [
 export default function Contact() {
   return (
     <>
-      <Seo
-        title="Contact"
-        path="/contact"
-        description="Book a 30-minute call, or reach Nick Palmer by email or phone. Based in Houston, working with clients anywhere."
-      />
+      <Seo {...metaFor('/contact')} />
 
       <Container className="pt-16 pb-20 sm:pt-20">
         <div className="grid gap-14 lg:grid-cols-[1.3fr_1fr]">

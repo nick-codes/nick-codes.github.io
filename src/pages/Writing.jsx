@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
+import { metaFor } from '../content/routes'
 import { Container, Eyebrow } from '../components/ui'
 import posts from '../generated/posts.json'
 
@@ -14,11 +15,7 @@ const formatDate = (iso) =>
 export default function Writing() {
   return (
     <>
-      <Seo
-        title="Writing"
-        path="/writing"
-        description="Archived posts on Android, build systems, Go, Scala and Swift — written between 2014 and 2015 and kept online."
-      />
+      <Seo {...metaFor('/writing')} />
 
       <Container className="pt-16 pb-12 sm:pt-20">
         <div className="max-w-3xl">

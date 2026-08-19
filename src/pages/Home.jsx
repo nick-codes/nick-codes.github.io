@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
+import { metaFor } from '../content/routes'
 import { Container, Section, Eyebrow, BookCall, ButtonLink } from '../components/ui'
 import { site, credentials } from '../content/site'
 import { services } from '../content/services'
@@ -7,7 +8,7 @@ import { services } from '../content/services'
 export default function Home() {
   return (
     <>
-      <Seo path="/" />
+      <Seo {...metaFor('/')} />
 
       {/* Hero ------------------------------------------------------------ */}
       <Container className="pt-16 pb-14 sm:pt-24 sm:pb-20">
