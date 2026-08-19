@@ -52,13 +52,32 @@ Two Node scripts wrap `vite build`:
    self-links in the 2014 posts to root-relative paths.
 
 2. **`tools/post-build.mjs`** (post-build) writes the things Vite does not:
-   - `dist/404.html` — a byte-for-byte copy of `index.html`. GitHub Pages serves
-     it for any unknown path, which boots the SPA directly at a deep URL like
-     `/posts/left-turn-to-go` with no redirect hop.
+   - **One `dist/<route>/index.html` per route.** This is the important one.
+     Relying on `404.html` alone meant every page but the home page was served
+     with an HTTP **404 status** — the content rendered, but search engines
+     treat a 404 status as "does not exist" regardless of the body, so nothing
+     was indexable. A real file per route makes GitHub Pages return 200.
+     Each file also gets its own `<title>`, description, canonical and og tags
+     baked in, so crawlers that do not execute JavaScript see correct metadata
+     rather than the home page's.
+   - `dist/404.html` — a copy of `index.html`, now only for genuinely unknown
+     URLs.
    - `dist/CNAME` — the apex domain.
    - `dist/feed.xml` — Atom feed at the same path the old `jekyll-feed` plugin
      used, so existing subscribers are unaffected.
    - `dist/sitemap.xml` and `dist/robots.txt`.
+
+   Route metadata lives in `src/content/routes.js` and is read by both the
+   `<Seo>` component and this script, so the runtime and the build cannot
+   drift.
+
+### URLs have a trailing slash
+
+Pages are served from directory indexes, so GitHub Pages 301s `/services` to
+`/services/`. Canonical tags, the sitemap and the feed all use the
+trailing-slash form — a canonical must name the final, non-redirecting URL.
+`canonicalPath()` in `src/content/routes.js` is the single place that rule
+lives.
 
 `src/generated/` is gitignored; it is rebuilt on every `dev` and `build`.
 
@@ -122,8 +141,11 @@ The feed, sitemap and archive index all pick it up automatically.
 
 - All seven 2014 posts, at their original `/posts/:slug` URLs.
 - `/about` and `/feed.xml`.
-- `/archive`, `/categories`, `/tags`, `/tag/:name` and `/category/:name` now
-  redirect to `/writing` rather than 404.
+- `/archive`, `/categories`, `/tags`, `/tag/:name` and `/category/:name` are
+  emitted as real 200 pages that canonical to `/writing`, so the old archive
+  URLs keep their history instead of 404ing. Tag and category paths are
+  enumerated from the posts, so they track content rather than a hard-coded
+  list.
 
 ## Repository layout note
 

@@ -79,9 +79,18 @@ pixels rather than trusting the load flags.
 ## Verifying changes
 
 `vite preview` has its own SPA fallback, which masks broken deep links. To test
-the way GitHub Pages actually behaves, serve `dist/` with a server that returns
-`404.html` for unknown paths and check a deep URL such as
-`/posts/left-turn-to-go` loads directly.
+the way GitHub Pages actually behaves, serve `dist/` with a server that serves
+`<path>/index.html` when present and falls back to `404.html` with a 404
+status otherwise.
+
+**Check status codes, not just rendered content.** A page can render perfectly
+and still be served with a 404, which is invisible in a browser and silently
+costs you search indexing. That exact bug shipped once here. Assert on
+`%{http_code}` for every route, not on what the body says.
+
+Adding a route means adding it to `src/content/routes.js`; otherwise
+`post-build.mjs` will not emit a file for it and it will 404 on a direct hit
+while working fine during client-side navigation.
 
 ## Deployment gotcha
 
