@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "nick.codes — fractional CTO and principal engineer for hire.",
+  "description": "nick.codes \u2014 fractional CTO and principal engineer for hire.",
   "scripts": {
     "content": "node tools/build-content.mjs",
     "dev": "npm run content && vite",
@@ -11,10 +11,10 @@
     "postbuild": "node tools/post-build.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist --nojekyll --cname nick.codes --dotfiles",
+    "deploy": "npm run build && gh-pages --dist dist --branch gh-pages --dotfiles --nojekyll --message \"Deploy site build\"",
     "claude": "docker-compose run claude",
-    "claude:build": "docker-compose run --build claude"
+    "claude:build": "docker-compose run --build claude",
+    "deploy:dry": "npm run build && echo \"--- dist/ contents ---\" && ls -R dist"
   },
   "dependencies": {
     "react": "^19.1.1",
