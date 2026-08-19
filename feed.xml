@@ -9,8 +9,8 @@
   <author><name>Nick Palmer</name><email>nick@nick.codes</email></author>
   <entry>
     <title>Left turn to Go</title>
-    <link href="https://nick.codes/posts/left-turn-to-go" rel="alternate" type="text/html"/>
-    <id>https://nick.codes/posts/left-turn-to-go</id>
+    <link href="https://nick.codes/posts/left-turn-to-go/" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/left-turn-to-go/</id>
     <published>2014-12-21T00:00:00.000Z</published>
     <updated>2014-12-21T00:00:00.000Z</updated>
     <summary>A brief discussion of my journey into the world of Go.</summary>
@@ -147,8 +147,8 @@ for some time to come.&lt;/p&gt;
   </entry>
   <entry>
     <title>The Good Side of Gradle</title>
-    <link href="https://nick.codes/posts/the-good-side-of-gradle" rel="alternate" type="text/html"/>
-    <id>https://nick.codes/posts/the-good-side-of-gradle</id>
+    <link href="https://nick.codes/posts/the-good-side-of-gradle/" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/the-good-side-of-gradle/</id>
     <published>2014-08-08T00:00:00.000Z</published>
     <updated>2014-08-08T00:00:00.000Z</updated>
     <summary>Gradle has some pretty useful plugins</summary>
@@ -194,8 +194,8 @@ devices and run commands against them.&lt;/p&gt;
   </entry>
   <entry>
     <title>Swift: Inspired by Scala?</title>
-    <link href="https://nick.codes/posts/swift-inspired-by-scala" rel="alternate" type="text/html"/>
-    <id>https://nick.codes/posts/swift-inspired-by-scala</id>
+    <link href="https://nick.codes/posts/swift-inspired-by-scala/" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/swift-inspired-by-scala/</id>
     <published>2014-07-21T00:00:00.000Z</published>
     <updated>2014-07-21T00:00:00.000Z</updated>
     <summary>A discussion of how similar Swift and Scala are.</summary>
@@ -360,8 +360,8 @@ in July 2011, so we can expect Google to add Java 8 features in 2017!
   </entry>
   <entry>
     <title>Reusing ListAdapters</title>
-    <link href="https://nick.codes/posts/reusing-listadapters" rel="alternate" type="text/html"/>
-    <id>https://nick.codes/posts/reusing-listadapters</id>
+    <link href="https://nick.codes/posts/reusing-listadapters/" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/reusing-listadapters/</id>
     <published>2014-05-25T00:00:00.000Z</published>
     <updated>2014-05-25T00:00:00.000Z</updated>
     <summary>In a previous post, I talked about how to improve on the classic &quot;View Holder Pattern&quot; commonly used to speed up list drawing on Android. The basic idea there was to use composition in order to properly encapsulate) data inside of the…</summary>
@@ -463,8 +463,8 @@ Github&lt;/a&gt;&lt;/p&gt;
   </entry>
   <entry>
     <title>Why Buck is Awesome!</title>
-    <link href="https://nick.codes/posts/why-buck-is-awesome" rel="alternate" type="text/html"/>
-    <id>https://nick.codes/posts/why-buck-is-awesome</id>
+    <link href="https://nick.codes/posts/why-buck-is-awesome/" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/why-buck-is-awesome/</id>
     <published>2014-05-22T00:00:00.000Z</published>
     <updated>2014-05-22T00:00:00.000Z</updated>
     <summary>Let's face it. Buck is Awesome! Buck's amazing features include: Non-recursive File based instead of task based Fast! Extensible. Easy to use. Really really fast! No really! Buck has cool output while building I recently began…</summary>
@@ -698,8 +698,8 @@ suck less.&lt;/p&gt;
   </entry>
   <entry>
     <title>Color Resources Must Be Resolved</title>
-    <link href="https://nick.codes/posts/color-resources-must-be-resolved" rel="alternate" type="text/html"/>
-    <id>https://nick.codes/posts/color-resources-must-be-resolved</id>
+    <link href="https://nick.codes/posts/color-resources-must-be-resolved/" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/color-resources-must-be-resolved/</id>
     <published>2014-05-21T00:00:00.000Z</published>
     <updated>2014-05-21T00:00:00.000Z</updated>
     <summary>I recently found some rather unfortunate code in an Android project I was working with: This is sucky code for two reasons. The first is that applying an alpha in this way is dubious at best. Why not use another color resource ? The second…</summary>
@@ -734,8 +734,8 @@ R.color.&amp;lt;anything&amp;gt; for an actual integer representation of the col
   </entry>
   <entry>
     <title>View Holder Pattern Improved</title>
-    <link href="https://nick.codes/posts/view-holder-pattern-improved" rel="alternate" type="text/html"/>
-    <id>https://nick.codes/posts/view-holder-pattern-improved</id>
+    <link href="https://nick.codes/posts/view-holder-pattern-improved/" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/view-holder-pattern-improved/</id>
     <published>2014-05-20T00:00:00.000Z</published>
     <updated>2014-05-20T00:00:00.000Z</updated>
     <summary>Most Android programmers know that to get buttery smooth list performance you have to make use of the View Holder Pattern in order to avoid repeated calls to , which can be very expensive. However, the tutorial that Google offers for this…</summary>
