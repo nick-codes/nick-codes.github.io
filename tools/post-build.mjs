@@ -4,7 +4,7 @@
 import { readFileSync, writeFileSync, copyFileSync, existsSync, mkdirSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { routeMeta, legacyRedirects, fullTitle } from '../src/content/routes.js'
+import { routeMeta, legacyRedirects, fullTitle, canonicalPath } from '../src/content/routes.js'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(root, 'dist')
@@ -43,7 +43,7 @@ const template = readFileSync(join(dist, 'index.html'), 'utf8')
 function pageFor(path, { title, description, type = 'website', canonical }) {
   const t = escape(fullTitle(title))
   const d = escape(description)
-  const url = `${SITE}${canonical || path}`
+  const url = `${SITE}${canonicalPath(canonical || path)}`
 
   // Replacement *functions*, not strings: the service descriptions contain
   // prices like "$500", and a `$n` sequence in a replacement string is read as
@@ -130,8 +130,8 @@ ${posts
   .map(
     (p) => `  <entry>
     <title>${escape(p.title)}</title>
-    <link href="${SITE}/posts/${p.slug}" rel="alternate" type="text/html"/>
-    <id>${SITE}/posts/${p.slug}</id>
+    <link href="${SITE}${canonicalPath(`/posts/${p.slug}`)}" rel="alternate" type="text/html"/>
+    <id>${SITE}${canonicalPath(`/posts/${p.slug}`)}</id>
     <published>${new Date(`${p.date}T00:00:00Z`).toISOString()}</published>
     <updated>${new Date(`${p.date}T00:00:00Z`).toISOString()}</updated>
     <summary>${escape(p.description || p.excerpt)}</summary>
@@ -158,7 +158,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 ${routes
   .map(
     (r) => `  <url>
-    <loc>${SITE}${r.loc}</loc>${r.lastmod ? `\n    <lastmod>${r.lastmod}</lastmod>` : ''}
+    <loc>${SITE}${canonicalPath(r.loc)}</loc>${r.lastmod ? `\n    <lastmod>${r.lastmod}</lastmod>` : ''}
     <priority>${r.priority}</priority>
   </url>`,
   )

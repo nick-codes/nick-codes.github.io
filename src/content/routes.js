@@ -36,6 +36,14 @@ export const routeMeta = {
   },
 }
 
+// GitHub Pages serves every route from a directory index, so a request for
+// /services is 301'd to /services/. A canonical URL must name the final,
+// non-redirecting address, so append the slash everywhere except the root.
+export function canonicalPath(path) {
+  if (!path || path === '/') return '/'
+  return path.endsWith('/') ? path : `${path}/`
+}
+
 // Matches the title format the <Seo> component produces.
 export function fullTitle(title) {
   return title ? `${title} — ${site.name}` : site.title
