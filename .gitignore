@@ -1,2 +1,40 @@
-_site
-.sass-cache
+# Build output
+dist
+dist-ssr
+*.local
+
+# Generated content (rebuilt by `npm run content`)
+src/generated
+
+# Dependencies
+node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local dev container state (host-side, not part of the site)
+.env
+.cache
+.claude
+.claude.json
+.gitconfig
+.local
+.npm
+.ssh
+.ssh-host

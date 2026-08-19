@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Theme. Tailwind 4 is configured CSS-first: the @theme block below *is* the
+   config, which is why there is no tailwind.config.js in this project.
+   Design intent: quiet, high-contrast, typographic. One accent colour, used
+   sparingly, so that the calls to action are the only things that shout.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-ink: #14161a;
+  --color-ink-soft: #3d434e;
+  --color-ink-faint: #6b7280;
+
+  --color-paper: #fbfaf8;
+  --color-paper-raised: #ffffff;
+  --color-rule: #e4e2dd;
+
+  --color-accent: #1c5d99;
+  --color-accent-dark: #16496f;
+  --color-accent-wash: #eef4fa;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas,
+    monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Long-form article styling for rendered Markdown posts. Scoped to .prose-post
+   so it never leaks into the marketing pages.
+--------------------------------------------------------------------------- */
+.prose-post {
+  color: var(--color-ink-soft);
+  font-size: 1.0625rem;
+}
+
+.prose-post > * + * {
+  margin-top: 1.25em;
+}
+
+.prose-post h2,
+.prose-post h3,
+.prose-post h4 {
+  color: var(--color-ink);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2.25em;
+  margin-bottom: 0.6em;
+  letter-spacing: -0.01em;
+}
+
+.prose-post h2 { font-size: 1.5rem; }
+.prose-post h3 { font-size: 1.25rem; }
+.prose-post h4 { font-size: 1.0625rem; }
+
+.prose-post a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-post a:hover { color: var(--color-accent-dark); }
+
+.prose-post strong { color: var(--color-ink); font-weight: 600; }
+
+.prose-post ul,
+.prose-post ol {
+  padding-left: 1.4em;
+}
+
+.prose-post ul { list-style: disc; }
+.prose-post ol { list-style: decimal; }
+.prose-post li { margin-top: 0.4em; }
+
+.prose-post blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.1em;
+  color: var(--color-ink-faint);
+  font-style: italic;
+}
+
+.prose-post code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-accent-wash);
+  color: var(--color-accent-dark);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+.prose-post pre {
+  background: var(--color-ink);
+  color: #e6e8eb;
+  padding: 1.1rem 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose-post pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+}
+
+.prose-post img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.prose-post hr {
+  border: 0;
+  border-top: 1px solid var(--color-rule);
+  margin: 2.5em 0;
+}
+
+.prose-post table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.prose-post th,
+.prose-post td {
+  border: 1px solid var(--color-rule);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
