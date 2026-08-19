@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Nick Palmer — Fractional CTO &amp; Principal Engineer</title>
+  <subtitle>Fractional CTO and principal engineer for hire. Architecture, AI strategy, cloud and scaling problems, and rescuing troubled projects.</subtitle>
+  <link href="https://nick.codes/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://nick.codes/" rel="alternate" type="text/html"/>
+  <updated>2014-12-21T00:00:00.000Z</updated>
+  <id>https://nick.codes/</id>
+  <author><name>Nick Palmer</name><email>nick@nick.codes</email></author>
+  <entry>
+    <title>Left turn to Go</title>
+    <link href="https://nick.codes/posts/left-turn-to-go" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/left-turn-to-go</id>
+    <published>2014-12-21T00:00:00.000Z</published>
+    <updated>2014-12-21T00:00:00.000Z</updated>
+    <summary>A brief discussion of my journey into the world of Go.</summary>
+    <content type="html">&lt;p&gt;Recently, I have taken a bit of a left turn in terms of my career
+path.  I had been spending a great deal of my professional time
+working with &lt;a href=&quot;http://www.android.com/&quot;&gt;Android&lt;/a&gt;, &lt;a href=&quot;https://java.com&quot;&gt;Java&lt;/a&gt;,
+and &lt;a href=&quot;http://en.wikipedia.org/wiki/Bluetooth_low_energy&quot;&gt;Bluetooth LE&lt;/a&gt;, while doing some
+&lt;a href=&quot;http://www.scala-lang.org/&quot;&gt;Scala&lt;/a&gt; development for backend
+services. To be honest, I was a little burned out on working with
+Android, and the quite unstable Bluetooth LE stack on that platform. I
+was also dissatisfied with Scala as a language.&lt;/p&gt;
+&lt;p&gt;So I made a sharp left turn and wound up writing
+&lt;a href=&quot;http://golang.org/&quot;&gt;Go&lt;/a&gt; full time. I hadn&amp;#39;t planned on this, but now
+that I have been working with Go full time for three months, I am
+quite fond of it. A friend recently asked me about the shift from
+Scala and Java to Go, and had I given up on functional and object
+oriented programming in general.&lt;/p&gt;
+&lt;p&gt;I don&amp;#39;t feel that I have completely given up on functional
+programming, just on the Scala version. Scala has a number of very
+serious problems, only some of which involve the magic required to
+shoe horn a functional language onto a non-functional runtime. If
+Scala were to update to run on a the Java 8 JVM then it may loose some
+of the warts. In particular stack traces in Scala can be almost
+impossible to decipher because of the compile time class generation
+that Scala does to do this magical shoehorning. However, Java 8 adds a
+lot of the features that made Scala worthwhile in the first place,
+like closures, so I am not sure I would do Scala over Java 8 were I to
+be faced with that choice.&lt;/p&gt;
+&lt;p&gt;The other problems with Scala have nothing to do with the shoehorn,
+but have to do with the combination of the Java equivalent of static
+import package.* and static import package.Class.* which can make it
+VERY hard to read Scala. Combine this with implicits and Scala’s
+preference for terseness over readability, sometimes to the point of
+insanity, and you are left with a language that can be as hard to read
+and maintain as Perl. That is not a good thing. In fact that is a very
+very bad thing.&lt;/p&gt;
+&lt;p&gt;Software spends most of its lifecycle in maintenance not
+development. Scala, while nice to write and very compact, often fails
+at being maintainable. Like horribly. So while I love functional
+concepts, I am not convinced that Scala made the right choices here.&lt;/p&gt;
+&lt;p&gt;So that brings us to object oriented (OO) programming. My friend asked me
+if there are things I miss from the object oriented world now that I
+am busy with Go all the time. The truth is, there are very few OO
+constructions that I miss in Go.&lt;/p&gt;
+&lt;p&gt;Go has interfaces which can &amp;quot;inherit&amp;quot; in a compositional kind of way,
+which gives you most of what is good in OO programming. At the same
+time, it is missing a bunch of OO gotchas. For example, because Go is
+not object oriented you don&amp;#39;t run into Java&amp;#39;s problem with ceding
+control in a synchronized block to a method that can be
+overridden. This is a great source of unexpected exceptions, deadlocks
+and/or data corruption. See &lt;a href=&quot;http://www.amazon.com/gp/product/0321356683/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321356683&amp;linkCode=as2&amp;tag=nick.codes-20&amp;linkId=A4EACIF5EJNTBFA7&quot;&gt;&amp;quot;Effective Java&amp;quot;&lt;/a&gt; item 67. Also see
+&amp;quot;Effective Java&amp;quot; 41 for a serious issue with method overloading in
+Java where the method you overloaded isn&amp;#39;t called! Polymorphism has
+some serious gotchas. In particular, in Java &amp;quot;selection of overloaded
+methods is static, while selection among overridden methods is
+dynamic.&amp;quot; This has been a source of more than one bug in my Java
+days. So I don&amp;#39;t miss the OO gotchas in Go. So far I have not found
+any language gotchas like that in Go.&lt;/p&gt;
+&lt;p&gt;However, you can use a struct as any of the interface types that it
+implements, and if you do struct embedding you can even inherit
+implementation. So while not &amp;quot;object oriented&amp;quot; it still allows for
+many &amp;quot;object oriented&amp;quot; like constructions where you can inherit
+implementation and use a single &amp;quot;object&amp;quot; as multiple types, which is
+usually what you want to do anyway with objects anyway. It has taken
+me a couple months of full time Go to &amp;quot;grok the Go way&amp;quot; of doing
+things, but now that I have, I am REALLY liking it.&lt;/p&gt;
+&lt;p&gt;My output in Go is rapidly coming up to where it was in Java, and is
+FAR past my Scala output despite spending more time with Scala. So to
+me the Go learning curve is more shallow. At first Go FEELS like C,
+but then it starts to dawn on you that it is more like C with some of
+the good concepts from OO without all the baggage. Go is interfaces,
+structs, functions, and methods on structs, with interface and struct
+embedding as the &amp;quot;inheritance&amp;quot; mechanism.&lt;/p&gt;
+&lt;p&gt;So far I have nothing but positive things to say about Go. I can&amp;#39;t say
+the same for any language I have ever tried. And I have tried a
+lot. My personal list of languages I have at least tinkered (written a
+small program with) with includes: Basic, C, C++, ObjectiveC, C#,
+Scala, Smalltalk / Squeak, Prolog, Python, Perl, Forth, HyperTalk,
+AppleScript, Bash, PHP (terrible shit show), List, Scheme, AspectJ,
+Assembly (x86, Arm, PPC, MC6800), Batch, Ruby, Clojure, JavaScript,
+CoffeeScript, Fortran, MATLAB, Swift, LaTEX, R, and Groovy. I like Go
+better than all of these.&lt;/p&gt;
+&lt;p&gt;The things that I miss in Go are the Scala val. Java doesn&amp;#39;t really
+have an equivalent unless you declare something final and ensure it
+has final members or no methods which mutate state post
+construction. It isn&amp;#39;t as clear to the reader in Java as it is in Scala.&lt;/p&gt;
+&lt;p&gt;Go has constants but they are completely limited to compile time and
+are thus limited to things you can construct entirely at declaration
+time. You cannot use the return from a function as an immutable object
+which I see as a bit of a weakness, but a limited one. Standard
+practice in Go is to use a private var for these kinds of things and
+just behave properly with it in the package. This is reasonable if not
+ideal.&lt;/p&gt;
+&lt;p&gt;Go has closures, so there is no reason that you couldn&amp;#39;t write Go in a
+functional way, people just don&amp;#39;t. Scala often uses a throw to hide an
+error that can be returned from some function. Go has panic and
+recover that can be used to do the same thing, but Go programmers tend
+to use more explicit error returns. To me this makes the code more
+verbose but also more readable. I consider this to be a good thing,
+since software readability has a serious impact on maintaining that
+software. Some of the Go I have written has functional aspects, for
+example a function returning a closure, but that isn&amp;#39;t Go&amp;#39;s primary
+modus operandi.&lt;/p&gt;
+&lt;p&gt;Go also has great facilities for testing and benchmarking built in, as
+well as reasonable tools for code coverage, a data race detector, a
+profiler, and most of the other tools you would expect. It compiles
+fast, UNLIKE Scala which takes FOREVER, and Go outputs statically
+linked binaries you can drop on any box running the same basic
+architecture and OS without the need to worry about JVM version blah
+blah blah. How many times have I been bitten by that? Go makes it easy
+to ship what you tested. Java and Scala, not so much.&lt;/p&gt;
+&lt;p&gt;Oh, and it also comes with a reasonable package manager that isn&amp;#39;t as
+hard to write as what Scala loves to use. We have a trivial shell
+script that manages all external dependencies, instead of having
+Scala&amp;#39;s massively over engineered sbt, or even worse
+Maven, or Ant, or even Gradle. The only other build system that even
+comes close is Buck, and even that is a whole lot more to deal with
+than just &amp;quot;go build&amp;quot;. Done.&lt;/p&gt;
+&lt;p&gt;Go can be a little bit more verbose, but this makes it pre-eminently
+readable which is more valuable to me as a maintainer of
+software. This is where Go seems to shine to me. It is easy to read
+other people&amp;#39;s Go and figure out what it is doing. In
+addition there are great constructs for parallelism built into the
+language and great libraries already written for you. So far I am
+really enjoying writing Go, and am happy to not be writing Java /
+Android code for awhile. Oh, Go also has a canonical format that you
+can enforce with &amp;quot;go format&amp;quot; and it always formats right. No more
+arguing about white space, braces, commas etc. Go format decides, and
+Go format does it &amp;quot;right&amp;quot;, at least by my style standards.&lt;/p&gt;
+&lt;p&gt;So there you have it. I have taken a surprisingly delightful left turn
+into the world of Go, and I am happy to stay living in this world
+for some time to come.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>The Good Side of Gradle</title>
+    <link href="https://nick.codes/posts/the-good-side-of-gradle" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/the-good-side-of-gradle</id>
+    <published>2014-08-08T00:00:00.000Z</published>
+    <updated>2014-08-08T00:00:00.000Z</updated>
+    <summary>Gradle has some pretty useful plugins</summary>
+    <content type="html">&lt;p&gt;While it&amp;#39;s true that &lt;a href=&quot;/posts/why-buck-is-awesome&quot;&gt;I think buck is
+awesome&lt;/a&gt;, the Android
+tools team has thrown their weight behind
+&lt;a href=&quot;http://tools.android.com/tech-docs/new-build-system/user-guide&quot;&gt;Gradle&lt;/a&gt;,
+which gives Gradle a serious advantage in the traction department.&lt;/p&gt;
+&lt;p&gt;This has resulted in a plethora of plugins being developed which do
+some awesome things. And while I prefer buck for actual builds,
+I am taking advantage of some of the work being done on
+gradle plugins to take care of some tasks associated with
+building Android projects.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://plus.google.com/+JakeWharton&quot;&gt;Jake Wharton&lt;/a&gt; has released
+several that are interesting. Most recently he released the &lt;a href=&quot;https://github.com/JakeWharton/sdk-manager-plugin&quot;&gt;SDK
+Manager Plugin&lt;/a&gt;,
+which is awesome for building on CI machines where you don&amp;#39;t want to
+have to be bothered with all the details of finding and installing the
+right SDK version.&lt;/p&gt;
+&lt;p&gt;Mr. Wharton has also released a plugin for using espresso with gradle
+called &lt;a href=&quot;https://github.com/JakeWharton/double-espresso&quot;&gt;double
+espresso&lt;/a&gt;. This plugin
+makes it much easier to get espresso tests running using gradle.&lt;/p&gt;
+&lt;p&gt;There is also the highly useful &lt;a href=&quot;https://github.com/nrudenko/gradle-android-cq-plugin&quot;&gt;android quality
+plugin&lt;/a&gt; which
+gives &lt;a href=&quot;http://findbugs.sourceforge.net/&quot;&gt;findbugs&lt;/a&gt;
+&lt;a href=&quot;http://pmd.sourceforge.net/&quot;&gt;pmd&lt;/a&gt; &lt;a href=&quot;http://pmd.sourceforge.net/&quot;&gt;copy paste
+detector&lt;/a&gt; and
+&lt;a href=&quot;http://checkstyle.sourceforge.net/&quot;&gt;checkstyle&lt;/a&gt; targets that can be
+used to help track software quality.&lt;/p&gt;
+&lt;p&gt;If you are using &lt;a href=&quot;&quot;&gt;Robolectric&lt;/a&gt; for tests then consider using their
+&lt;a href=&quot;https://github.com/robolectric/gradle-android-test-plugin&quot;&gt;Android Test Plugin&lt;/a&gt;
+to get tests running quickly in the IDE, which is a fork of
+an earlier plugin, again from Mr. Wharton. Have I mentioned he is
+awesome? Having never met him, I can honesty say he is. ;~)&lt;/p&gt;
+&lt;p&gt;Another really useful plugin for working with Android on CI servers is
+the &lt;a href=&quot;https://github.com/novoda/gradle-android-command-plugin&quot;&gt;Android Command
+Plugin&lt;/a&gt;,
+which makes it easier to install particular builds on particular
+devices and run commands against them.&lt;/p&gt;
+&lt;p&gt;What plugins are you using to make your builds suck less?&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Swift: Inspired by Scala?</title>
+    <link href="https://nick.codes/posts/swift-inspired-by-scala" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/swift-inspired-by-scala</id>
+    <published>2014-07-21T00:00:00.000Z</published>
+    <updated>2014-07-21T00:00:00.000Z</updated>
+    <summary>A discussion of how similar Swift and Scala are.</summary>
+    <content type="html">&lt;p&gt;As part of WWDC this year in San Francisco,
+&lt;a href=&quot;http://apple.com&quot;&gt;Apple&lt;/a&gt; announced a &lt;a href=&quot;http://techcrunch.com/2014/06/02/apple-launches-swift-a-new-programming-language-for-writing-ios-and-os-x-apps/&quot;&gt;new programming language for
+iOS called
+Swift&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I took a look at &lt;a href=&quot;https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_399&quot;&gt;the Swift language
+guide&lt;/a&gt;
+and I was surprised to see that the language has been heavily
+influenced by &lt;a href=&quot;http://www.scala-lang.org/&quot;&gt;Scala&lt;/a&gt;. But then, what language isn&amp;#39;t being heavily influenced by Scala lately? Even Java 8 has added Scala like features in the form
+of &lt;a href=&quot;https://leanpub.com/whatsnewinjava8/read#leanpub-auto-lambda-expressions&quot;&gt;Lambda expressions&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Never the less, I was pleased with many of the choices that Swift has
+made. It is certainly a huge leap forward from Objective-C, and a long
+overdue one. The language looks awesome.&lt;/p&gt;
+&lt;table class=&quot;table table-striped table-bordered table-hover table-condensed&quot;&gt;
+&lt;tr&gt;
+	&lt;th&gt;&lt;/th&gt;
+	&lt;th&gt;Scala&lt;/th&gt;
+	&lt;th&gt;Swift&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Constants&lt;/th&gt;
+	&lt;td&gt;val max = 10&lt;/td&gt;
+	&lt;td&gt;let max = 10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Variables&lt;/th&gt;
+	&lt;td&gt;var min = 5&lt;/td&gt;
+	&lt;td&gt;var min = 5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Type Annotation&lt;/th&gt;
+	&lt;td&gt;var welcome: String&lt;/td&gt;
+	&lt;td&gt;var welcome: String&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Printing&lt;/th&gt;
+	&lt;td&gt;println(welcome)&lt;/td&gt;
+	&lt;td&gt;println(welcome)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Semicolons&lt;/th&gt;
+	&lt;td&gt;Optional&lt;/td&gt;
+	&lt;td&gt;Optional&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Comments&lt;/th&gt;
+	&lt;td&gt;// Single Line &lt;br/&gt; /*&lt;br/&gt;&amp;nbsp;* Multi-Line&lt;br/&gt;&amp;nbsp;*/&lt;/td&gt;
+	&lt;td&gt;// Single Line &lt;br/&gt; /*&lt;br/&gt;&amp;nbsp;* Multi-Line&lt;br/&gt;&amp;nbsp;*/&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Type Safety&lt;/th&gt;
+	&lt;td&gt;Yes&lt;/td&gt;
+	&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Type Inference&lt;/th&gt;
+	&lt;td&gt;Yes&lt;/td&gt;
+	&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Type Alias&lt;/th&gt;
+	&lt;td&gt;type AudioSample = Int&lt;/td&gt;
+	&lt;td&gt;typelias AudoSample UInt16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Tuples&lt;/th&gt;
+	&lt;td&gt;val http404Erro = (404, &quot;NotFound&quot;)&lt;/td&gt;
+	&lt;td&gt;let http404Erro = (404, &quot;NotFound&quot;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Optionals&lt;/th&gt;
+	&lt;td&gt;val name: Option[String]&lt;/td&gt;
+	&lt;td&gt;val name = String?&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Unwrapping Optionals&lt;/th&gt;
+	&lt;td&gt;name.get&lt;/td&gt;
+	&lt;td&gt;name!&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Optional Binding&lt;/th&gt;
+	&lt;td&gt;val converted = num.getOrElse(default)&lt;/td&gt;
+	&lt;td&gt;if let converted = num { let converted = default }&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Ranges&lt;/th&gt;
+	&lt;td&gt;1 to 10&lt;/td&gt;
+	&lt;td&gt;1...10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Ranges&lt;/th&gt;
+	&lt;td&gt;1 to 10&lt;/td&gt;
+	&lt;td&gt;1...10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;String Interpolation&lt;/th&gt;
+	&lt;td&gt;val message = s&quot;Some $value&quot;&lt;/td&gt;
+	&lt;td&gt;let message = &quot;Some \(value)&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Array Literals&lt;/th&gt;
+	&lt;td&gt;val arr = Array(&quot;Hello&quot;,&quot;World&quot;)&lt;/td&gt;
+	&lt;td&gt;let arr = [&quot;Hello&quot;, &quot;World&quot;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Dictionaries&lt;/th&gt;
+	&lt;td&gt;var airports = Map((&quot;TYO&quot;, &quot;Tokyo&quot;), (&quot;DUB&quot;, &quot;Dublin&quot;))&lt;/td&gt;
+	&lt;td&gt;var airports: Dictionary&lt;String, String&gt;= [&quot;TYO&quot;: &quot;Tokyo&quot;, &quot;DUB&quot;: &quot;Dublin&quot;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Accessing Dictionaries&lt;/th&gt;
+	&lt;td&gt;airports(&quot;TYO&quot;)&lt;/td&gt;
+	&lt;td&gt;airports[&quot;TYO&quot;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Iterating Dictionaries&lt;/th&gt;
+	&lt;td&gt;for ((airportCode, airportName)&lt;- airports)&lt;/td&gt;
+	&lt;td&gt;for (airportCode, airportName) in airports { ... }&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Switch with Range&lt;/th&gt;
+	&lt;td&gt;t match { case x if ((0 to 10).contains(x)) =&gt;true ; case _ =&gt;false }&lt;/td&gt;
+	&lt;td&gt;switch t { case 0...10 return true; default: return false }&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Named Parameters&lt;/th&gt;
+	&lt;td&gt;def printName(first:String, last:String) { println(first + &quot; &quot; + last) }&lt;/td&gt;
+	&lt;td&gt;func printName(#first: String, #last: String) { ... }&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Default Parameter Values&lt;/th&gt;
+	&lt;td&gt;func join(start, middle = &quot; &quot;, end)&lt;/td&gt;
+	&lt;td&gt;func join (start, middle = &quot; &quot;, end)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Generics&lt;/th&gt;
+	&lt;td&gt;func concat&amp;lt;T&amp;gt;(a: T, b: T)&lt;/td&gt;
+	&lt;td&gt;func concat&amp;lt;T&amp;gt;(a: T, b: T)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;th&gt;Extension / Mixins&lt;/th&gt;
+	&lt;td&gt;trait Mixin {&lt;br/&gt;&amp;nbsp;var i: Double;&lt;br/&gt;&amp;nbsp;def doSomething() { }&lt;br/&gt; } &lt;/td&gt;
+	&lt;td&gt;extension Mixin {&lt;br/&gt;&amp;nbsp;var i: Double;&lt;br/&gt;&amp;nbsp;doSomething() { }&lt;br/&gt; } &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;As you can see, other than the change from &lt;em&gt;val&lt;/em&gt; to the pascal like
+&lt;em&gt;let&lt;/em&gt;, many of the language features are exactly the same.  It is
+great to see Apple finaly come to the table with a modern language
+design. Now if only Google would step up and bring Java 8 features to
+Android. Google recently added support for &lt;a href=&quot;http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Using-sourceCompatibility-1.7&quot;&gt;Java 7
+features&lt;/a&gt;
+features if you are using Gradle and jump through some hoops, though
+try with resources is only supported on API 19 and above due to the
+need for support in the VM. Considering that Oracle released version 7
+in July 2011, so we can expect Google to add Java 8 features in 2017!
+;)&lt;/p&gt;
+&lt;p&gt;I am looking forward to using Swift to make my iOS code suck less to write.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Reusing ListAdapters</title>
+    <link href="https://nick.codes/posts/reusing-listadapters" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/reusing-listadapters</id>
+    <published>2014-05-25T00:00:00.000Z</published>
+    <updated>2014-05-25T00:00:00.000Z</updated>
+    <summary>In a previous post, I talked about how to improve on the classic &quot;View Holder Pattern&quot; commonly used to speed up list drawing on Android. The basic idea there was to use composition in order to properly encapsulate) data inside of the…</summary>
+    <content type="html">&lt;p&gt;In &lt;a href=&quot;/posts/view-holder-pattern-improved&quot;&gt;a previous
+post&lt;/a&gt;, I talked
+about how to improve on the classic &amp;quot;View Holder Pattern&amp;quot; commonly
+used to speed up list drawing on Android.&lt;/p&gt;
+&lt;p&gt;The basic idea there was to use
+&lt;a href=&quot;http://en.wikipedia.org/wiki/Object_composition&quot;&gt;composition&lt;/a&gt; in
+order to properly
+[encapsulate](&lt;a href=&quot;http://en.wikipedia.org/wiki/Encapsulation_(object-oriented_programming%5C)&quot;&gt;http://en.wikipedia.org/wiki/Encapsulation_(object-oriented_programming\)&lt;/a&gt;)
+data inside of the ViewHolder.&lt;/p&gt;
+&lt;p&gt;In this article I am going to show you how you can use
+&lt;a href=&quot;http://en.wikipedia.org/wiki/Generics_in_Java&quot;&gt;generics&lt;/a&gt; to further
+increase code reuse for ListAdapters, and eliminate the need to write
+repetitive &lt;code&gt;getView()&lt;/code&gt; code for every adapter.&lt;/p&gt;
+&lt;p&gt;The primary observation here is that the list adapter doesn&amp;#39;t really
+do a lot.  In particular, since we have delegated most of the work of
+finding the views and binding the data into the ViewHolder, we can use
+generics to make the ListAdapter more reusable, regardless of what
+layout and view we are using. All the heavy lifting is managed in the
+ViewHolder already anyway.&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&quot;/posts/view-holder-pattern-improved&quot;&gt;the last
+article&lt;/a&gt;, we
+ended up with a ListAdapter which had a &lt;code&gt;getView()&lt;/code&gt; method that looked
+like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;// Inside the adapter
+public void getView(final int position, final View convertView, final ViewGroup parent) {
+  ViewHolder holder;
+  View boundView = convertView;
+  if (boundView == null) {
+    boundView = LayoutInflater.from(context).inflate(R.layout.row, null);
+    holder = new ViewHolder(boundView);
+  } else {
+    holder = (ViewHolder) boundView.getTag();
+  }
+  holder.bind(getItem(position));
+
+  return boundView;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In order to make this ListAdapter reusable, we need to be able to give
+a way for the ViewHolder to be constructed by the list adapter, and we
+need that view holder to accept data from our list adapter. Ideally we
+would like this to all be &lt;a href=&quot;http://en.wikipedia.org/wiki/Type_safe&quot;&gt;type
+safe&lt;/a&gt; which is where generics
+come in.&lt;/p&gt;
+&lt;p&gt;We begin by building a base class for our ViewHolders which has the
+right interface needed by our &lt;code&gt;getView()&lt;/code&gt; method shown above. It looks
+like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public abstract class ReusableViewHolder&amp;lt;T&amp;gt; {
+
+	public ReusableViewHolder(View view) {
+		view.setTag(this);
+	}
+
+	public abstract void bind(T data);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The nice thing about using this holder is that we can now never forget
+to bind the ViewHolder to the view. In addition, the use of generics
+means that the bind method can take data of whatever type our
+application is using. Yeah type safety!&lt;/p&gt;
+&lt;p&gt;Now for our next step, we will build a ReusableListAdapter that can
+build this holder. This is quite simple, as we simply delegate the
+ReusableViewHolder&lt;T&gt; construction to the subclass using an abstract
+method. This gives us code for the ListAdapter that looks like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@Override
+public View getView(final int position, final View convertView, final ViewGroup parent) {
+	ReusableViewHolder&amp;lt;T&amp;gt; holder;
+	View boundView;
+
+	if (convertView == null) {
+		boundView = mInflater.inflate(mLayoutId, null);
+		holder = buildViewHolder(boundView);
+	} else {
+		boundView = convertView;
+		holder = (ReusableViewHolder&amp;lt;T&amp;gt;) boundView.getTag();
+	}
+	holder.bind(getItem(position));
+
+	return boundView;
+}
+
+protected abstract ReusableViewHolder&amp;lt;T&amp;gt; buildViewHolder(View view);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The great thing about this is that now when we want to build a
+ListAdapter, we simply have one method to implement which is completely
+trivial. It simply has to return a new instance of the subclass of
+ReusableViewHolder we are using. We could instead pass in a type token
+and use reflection to construct this instance, but the performance
+penalty for using reflection is pretty high, and adding a method with
+a single new in it is already a pretty trivial implementation.&lt;/p&gt;
+&lt;p&gt;For an example of this pattern being used please see the &lt;a href=&quot;http://github.com/nickpalmer/ReusableListAdapter.git&quot;&gt;companion
+repository on
+Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Make your code suck less by using generics to facilitate code reuse!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Why Buck is Awesome!</title>
+    <link href="https://nick.codes/posts/why-buck-is-awesome" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/why-buck-is-awesome</id>
+    <published>2014-05-22T00:00:00.000Z</published>
+    <updated>2014-05-22T00:00:00.000Z</updated>
+    <summary>Let's face it. Buck is Awesome! Buck's amazing features include: Non-recursive File based instead of task based Fast! Extensible. Easy to use. Really really fast! No really! Buck has cool output while building I recently began…</summary>
+    <content type="html">&lt;p&gt;Let&amp;#39;s face it. &lt;a href=&quot;http://facebook.github.io/buck/&quot;&gt;Buck is Awesome!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Buck&amp;#39;s amazing features include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/why-buck-is-awesome#non-recursive&quot;&gt;Non-recursive&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/why-buck-is-awesome#file-based&quot;&gt;File based instead of task based&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/why-buck-is-awesome#fast&quot;&gt;Fast!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/why-buck-is-awesome#extensible&quot;&gt;Extensible.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/why-buck-is-awesome#easy&quot;&gt;Easy to use.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/why-buck-is-awesome#really-fast&quot;&gt;Really really fast! No really!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/why-buck-is-awesome#cool-output&quot;&gt;Buck has cool output while building&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I recently began experimenting with Buck as replacement for the usual
+&lt;a href=&quot;http://ant.apache.org/&quot;&gt;Ant&lt;/a&gt; based build system in Android,
+and the only conclusion that I can draw is that buck is awesome.&lt;/p&gt;
+&lt;p&gt;While it is true the Android guys have thrown their weight behind &lt;a
+href=&quot;http://tools.android.com/tech-docs/new-build-system/user-guide&quot;&gt;Gradle&lt;/a&gt;
+I really prefer the approach that Buck has taken.&lt;/p&gt;
+&lt;p&gt;Gradle still has some serious &lt;a
+href=&quot;https://code.google.com/p/android/issues/detail?id=52962&quot;&gt;bugs
+with how it deals with library projects&lt;/a&gt; that prevent me from
+moving to Gradle full time. While the number of awesome plugins to
+Gradle is increasing, which makes it more attractive, I have found the
+learning curve on Gradle to be much steeper. In many ways I feel like
+Gradle is a reimplementation of Maven with many of the same warts.
+And while I think that Android Studio is a much better IDE for
+building Android code, Buck is simply a better build system for my
+needs.&lt;/p&gt;
+&lt;p&gt;Buck is patterned after &lt;a
+href=&quot;http://google-engtools.blogspot.com/2011/08/build-in-cloud-how-build-system-works.html&quot;&gt;Blaze
+from Google&lt;/a&gt; and is a re-implementation targeted at building java
+and android projects. Facebook has the largest Android code base in
+the world and they build everything out of one repository. The fact
+that they are using Buck to build their code base is a strong
+endorsement. Being patterned after Google&amp;#39;s build system can&amp;#39;t hurt
+either.&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;non-recursive&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Buck is Not Recursive&lt;/h2&gt;
+
+&lt;p&gt;Buck is awesome because it doesn&amp;#39;t use a recursive build
+system. Period.  Recursive build is bad. I have thought so since I
+read &lt;a href=&quot;http://miller.emu.id.au/pmiller/books/rmch/&quot;&gt;Peter
+Miller&amp;#39;s canonical paper on the subject.&lt;/a&gt; I redid a large C project
+I was working on following his paper as a guide and ended up with more
+reliable builds that went faster. Win!&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;file-based&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Buck is File Based&lt;/h2&gt;
+
+&lt;p&gt;Buck follows a file based approach to building. It doesn&amp;#39;t rely on
+timestamps like Make does. Instead it uses hashes of files to determine
+if a file changed. This means it is not subject to the vagaries of
+clocks. It also means that Buck can do smart caching. It can tell if
+any downstream file needs to be rebuilt based on the hash of the
+upstream file. This also means that it is very good at figuring out
+what doesn&amp;#39;t need to be rebuilt and using cached versions, making
+incremental builds much faster.&lt;/p&gt;
+&lt;p&gt;It also doesn&amp;#39;t have Ant&amp;#39;s &amp;quot;do this, then do that&amp;quot; task structure
+which makes you think about how to build instead of what to build.
+Focusing on what to build makes writing build files much easier.
+It also makes it much easier for Buck to cache things, since
+it knows how to transform the input files into the output. With
+Ant&amp;#39;s task based setup Ant has to run many tasks that are not
+necessary in order to run a build.&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;fast&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Buck is Fast!&lt;/h2&gt;
+
+&lt;p&gt;Buck is awesome because Buck is fast.  &lt;a
+href=&quot;http://blog.ltgt.net/in-quest-of-the-ultimate-build-tool/&quot;&gt;Thomas
+Broyer&lt;/a&gt; did some quick comparisons with maven and found that buck
+is faster than maven.&lt;/p&gt;
+&lt;p&gt;I have run a similar &lt;b&gt;non benchmark&lt;/b&gt; against Gradle over our
+fairly large project setup involving many library projects. My results
+represent a typical developer machine with a bunch of other apps running
+but is in no way a benchmark. I&amp;#39;m not sure one is needed though.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ./gradlew clean
+$ time ./gradlew build -p one-of-our-apps
+
+real	3m22.099s
+user	7m41.103s
+sys	0m58.628s
+
+$ time ./gradelw build -p one-of-our-apps
+
+real	0m20.768s
+user	0m45.762s
+sys	0m2.593s
+
+$ ./gradlew clean
+$ time ./gradlew --parallel build -p one-of-our-apps
+Parallel execution is an incubating feature.
+
+real	3m18.475s
+user	7m46.713s
+sys	1m1.647s
+
+$ time ./gradlew --parallel build -p one-of-our-apps
+Parallel execution is an incubating feature.
+
+real	0m20.454s
+user	0m51.110s
+sys	0m3.066s
+
+$ buck clean
+$ time buck build one-of-our-apps
+
+real	0m56.374s
+user	3m11.263s
+sys	0m6.643s
+
+$time buck build one-of-our-apps
+
+real	0m3.821s
+user	0m5.185s
+sys	0m0.739s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That&amp;#39;s not just faster, that&amp;#39;s a whole hell of a lot faster! Note that
+Gradle&amp;#39;s --parallel option didn&amp;#39;t really help a lot on this codebase.&lt;/p&gt;
+&lt;p&gt;Maybe --parallel would help on other code bases, but I expect that since they
+don&amp;#39;t execute multiple tasks within the same project they don&amp;#39;t have
+nearly as much win as Buck does in the parallel game.&lt;/p&gt;
+&lt;p&gt;And with Shawn Pierce having moved &lt;a
+href=&quot;https://gerrit-review.googlesource.com/#/c/54821/&quot;&gt;Gerrit to
+using Buck&lt;/a&gt;, you can be sure that buck is mature enough for a
+serious project.&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;really-fast&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Buck is Really Fast!&lt;/h2&gt;
+
+&lt;p&gt;Because Buck is using file based hashing, Buck also has the ability to
+be connected to a &lt;a href=&quot;http://cassandra.apache.org/&quot;&gt;Cassandra
+instance&lt;/a&gt; for distributed caching. This means that if a team of
+developers is all working on the same project, if anybody has ever
+built that artifact with that set of dependencies you can download the
+cached version from them instead of building it yourself. On a fast
+network, you can start to see how Buck could be really awesome at the
+Facebook scale of development.&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;easy&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Buck is Easy to Use&lt;/h2&gt;
+
+&lt;p&gt;Buck is pretty easy to use too. I was able to convert our extensive
+build system to use buck much faster than I was able to convert to
+Gradle, even with the Eclipse export option. The export option barely
+worked, and I spent forever chasing down issues. Not to mention
+that Gradle wants you to reorganize you source tree from the way that
+Eclipse does it. If you still need to support Eclipse, you are
+left to jump through Gradle hoops to get everything working, and
+you can&amp;#39;t take advantage of all of Gradle&amp;#39;s features.&lt;/p&gt;
+&lt;p&gt;Buck on the other hand was pretty easy to setup. I just had to
+think through the files that buck needed to build and tell
+Buck how to build those. For my way of thinking about building
+it was super easy. Specify the files that make up the artifact
+and any dependent artifacts and you are done.&lt;/p&gt;
+&lt;p&gt;I also recently made use of Bucks &lt;a
+href=&quot;http://facebook.github.io/buck/function/include_defs.html&quot;&gt;include_defs()&lt;/a&gt;
+feature in our build system which allowed me to reduce many of our
+build files to a single declaration. We have a lot of library projects
+and applications which are all built in similar ways with similar file
+structures. In most cases I now have simple declarations like for
+library projects. Apps are only slightly more complicated for
+specifying the AndroidManifest.xml file.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;android_library_project(
+    name = &amp;#39;some-library-project&amp;#39;,
+    package = &amp;#39;some.library.project.package&amp;#39;,
+    srcs = glob([&amp;#39;src/main/java/**/*.java&amp;#39;]),
+    deps = [&amp;#39;//some-other-library-project:some-other-library-project&amp;#39;],
+    )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If that isn&amp;#39;t easy to use, I don&amp;#39;t know what is!&lt;/p&gt;
+&lt;p&gt;In addition it is easy to use Buck from the command line. Targets are
+named based on the directory they are in, and if your BUCK file has a
+target with the same name as the directory then it is used as the
+default target. This means you can use tab completion to specify most
+targets you want. Want a debug version? Tab complete the directory,
+delete the slash and add :debug! (Assuming your debug target is named
+debug within your BUCK file, which I suggest.)&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;extensible&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Buck is Extensible&lt;/h2&gt;
+
+&lt;p&gt;Buck is also pretty easy to hack on. I wanted to find out how easy, so
+I &lt;a href=&quot;https://github.com/facebook/buck/pull/95&quot;&gt;solved one of my
+own pain points&lt;/a&gt; of generating BuildConfig.java files. I had
+previously solved this with a little python, but cracking open the
+Buck source was surprisingly easy. That change set took just half a
+day to put together.&lt;/p&gt;
+&lt;p&gt;But the fact that I could previously solve the issue using python is
+another strength of Buck. It is easily extensible without having
+to touch the Buck source code.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/davido/bucklets&quot;&gt;Bucklets&lt;/a&gt; are a
+prefect example. Some have criticized Buck for not including the
+ability to download external dependencies or use jars out of the local
+maven repository. But using just Buck&amp;#39;s build files the Bucklets
+project has added those features without having to touch Buck source
+code. That&amp;#39;s just awesome!&lt;/p&gt;
+&lt;p&gt;I have yet to update our buck system to using the maven_jar task,
+since we are still supporting Ant anyway so we need a copy of
+dependencies in the lib dir, but it is certainly on my list of things
+to do. I can even see it being relatively easy to write a BUCK build
+task to generate build.gradle files. I have also used the
+&lt;code&gt;include_defs()&lt;/code&gt; feature as outlined above to further customize
+and simplify our build system. And simplifying writing build files
+is awesome.&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;cool-output&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Buck has Cool Output While Building&lt;/h2&gt;
+
+&lt;p&gt;The last thing that is really awesome about Buck is the super cool
+parallel build display it shows you while you are building. It
+shows you how many executors it is using, with one on each line,
+and displays what each executor is doing, and how long it has
+been doing it for.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ buck build some-app
+[-] PARSING BUILD FILES...FINISHED 1.5s
+[+] BUILDING...0.7s
+ |=&amp;gt; //crashlytics:crashlytics#dummy_r_dot_java...  0.3s (running javac[0.1s])
+ |=&amp;gt; //android-support-v7-appcompat:res...  0.7s (running aapt_package[0.4s])
+ |=&amp;gt; //google-play-services_lib:google-play-services_lib#dummy_r_dot_java...  0.1s (running javac[0.0s])
+ |=&amp;gt; //crashlytics:crashlytics-lib#dummy_r_dot_java...  0.3s (running javac[0.2s])
+ |=&amp;gt; //native-library-project/jni:libnative_sd...  0.6s (running ndk_build[0.4s])
+ |=&amp;gt; //some-app:app_manifest...  0.3s (running generate_manifest[0.3s])
+ |=&amp;gt; //some-library:res...  0.7s (running aapt_package[0.5s])
+ |=&amp;gt; //google-play-services_lib:google-play-services-jar...  0.7s (running get_class_names[0.5s])
+ |=&amp;gt; //some-app:crashlytics_res...  0.7s (running genrule[0.6s])
+ |=&amp;gt; //some-library:guava...  0.5s (running get_class_names[0.4s])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It has colors and everything that you can&amp;#39;t see here now. There is an
+&lt;a href=&quot;http://facebook.github.io/buck/&quot;&gt;animated gif with this on
+the Buck homepage&lt;/a&gt;, so check it out to see it in action. It&amp;#39;s awesome!&lt;/p&gt;
+&lt;p&gt;In conclusion, Buck is awesome. Use it to make your build system
+suck less.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Color Resources Must Be Resolved</title>
+    <link href="https://nick.codes/posts/color-resources-must-be-resolved" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/color-resources-must-be-resolved</id>
+    <published>2014-05-21T00:00:00.000Z</published>
+    <updated>2014-05-21T00:00:00.000Z</updated>
+    <summary>I recently found some rather unfortunate code in an Android project I was working with: This is sucky code for two reasons. The first is that applying an alpha in this way is dubious at best. Why not use another color resource ? The second…</summary>
+    <content type="html">&lt;p&gt;I recently found some rather unfortunate code in an Android project I was working with:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private static final int MAIN_COLOR = R.color.main_color;
+private static final int SECONDARY_COLOR = R.color.main_color | (0x05 &amp;lt;&amp;lt; 24);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is sucky code for two reasons. The first is that applying an
+alpha in this way is dubious at best. Why not use another &lt;a
+href=&quot;http://developer.android.com/guide/topics/resources/more-resources.html#Color&quot;&gt;color
+resource&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;The second is that android color resources are not materialized in the
+resource array. That is the value of R.color.main_color from the resource file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;resources&amp;gt;
+  &amp;lt;color name=&amp;quot;main_color&amp;quot;&amp;gt;#aabbcc&amp;quot;&amp;lt;/a&amp;gt;
+&amp;lt;/resources&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;is not in fact &lt;code&gt;0xAABBCC&lt;/code&gt; but is in fact an arbitrary id number
+picked by the resource compiler. To get the value you need to resolve
+the id to a color using &lt;a
+href=&quot;http://developer.android.com/reference/android/content/res/Resources.html#getColor(int)&quot;&gt;getContext()
+.getResources() .getColor(R.color.main_color);&lt;/a&gt; Thus the above
+&lt;code&gt;SECONDARY_COLOR&lt;/code&gt; may change arbitrarily as you add and remove
+color resources and the compiler updates the ids.  Even worse, if the
+project is a library project, the id may change depending on which
+application you are bundling the library with, as the resource
+compiler has to have all ids unique within the entire application.&lt;/p&gt;
+&lt;p&gt;In conclusion, make your code suck less by not mistaking
+R.color.&amp;lt;anything&amp;gt; for an actual integer representation of the color.&lt;/p&gt;
+&lt;p&gt;Color resources must be resolved!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>View Holder Pattern Improved</title>
+    <link href="https://nick.codes/posts/view-holder-pattern-improved" rel="alternate" type="text/html"/>
+    <id>https://nick.codes/posts/view-holder-pattern-improved</id>
+    <published>2014-05-20T00:00:00.000Z</published>
+    <updated>2014-05-20T00:00:00.000Z</updated>
+    <summary>Most Android programmers know that to get buttery smooth list performance you have to make use of the View Holder Pattern in order to avoid repeated calls to , which can be very expensive. However, the tutorial that Google offers for this…</summary>
+    <content type="html">&lt;p&gt;Most Android programmers know that to get buttery smooth list
+performance you have to make use of the &lt;a
+href=&quot;http://developer.android.com/training/improving-layouts/smooth-scrolling.html&quot;&gt;View
+Holder Pattern&lt;/a&gt; in order to avoid repeated calls to
+&lt;a href=&quot;http://developer.android.com/reference/android/app/Activity.html#findViewById(int)&quot;&gt;&lt;code&gt;findViewById()&lt;/code&gt;&lt;/a&gt;, which can be very expensive.&lt;/p&gt;
+&lt;p&gt;However, the tutorial that Google offers for this pattern, and thus
+the way that many developers end up using it, does a very bad job of
+separating concerns.&lt;/p&gt;
+&lt;p&gt;The blog from Android about this suggests using the following class:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;static class ViewHolder {
+  TextView text;
+  TextView timestamp;
+  ImageView icon;
+  ProgressBar progress;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then it suggests that you populate this ViewHolder with a big
+long block of formatting code in your list:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ViewHolder holder = new ViewHolder()
+holder.icon = (ImageView) convertView.findViewById(R.id.listitem_image);
+holder.text = (TextView) convertView.findViewById(R.id.listitem_text);
+holder.timestamp = (TextView) convertView.findViewById(R.id.listitem_timestamp);
+holder.progress = (ProgressBar) convertView.findViewById(R.id.progress_spinner);
+convertView.setTag(holder);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;They don&amp;#39;t show you the block where you also bind data to the various views
+in the holder, but as an example, you might have something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ValueObject value = getItem(position);
+holder.text.setText(value.getText());
+holder.timestamp.setText(value.getTimestamp());
+holder.icon.setImageResource(value.getImageResource());
+holder.progress.setSelection(value.getProgress());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So if we follow this pattern we end up with huge chunks of really long
+code with three dots per line. Hard to read? It is for me.&lt;/p&gt;
+&lt;p&gt;This is prime territory for a refactor to an improved pattern.&lt;/p&gt;
+&lt;p&gt;I like to follow a construct and bind pattern. To do this we make the
+ViewHolder class much richer, which has the upshot of letting us use
+proper &lt;a href=&quot;http://en.wikipedia.org/wiki/Encapsulation_(object-oriented_programming)&quot;&gt;encapsulation&lt;/a&gt;. It also makes the &lt;a
+href=&quot;https://developer.android.com/reference/android/widget/Adapter.html#getView(int,
+android.view.View, android.view.ViewGroup)&quot;&gt;&lt;code&gt;getView()&lt;/code&gt;&lt;/a&gt; code
+much cleaner.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;static class ViewHolder {
+  private final TextView text;
+  private final TextView timestamp;
+  private final ImageView icon;
+  private final ProgressBar progress;
+
+  public ViewHolder(final View view) {
+    text = (TextView) view.findViewById(R.id.listitem_text);
+    timestamp = (TextView) view.findViewById(R.id.listitem_timestamp);
+    icon = (ImageView) view.findViewById(R.id.listitem_image);
+    progress = (ProgressBar) view.findViewById(R.id.progress_spinner);
+
+    view.setTag(this);
+  }
+
+  public void bind(final ValueObject value) {
+    text.setText(value.getText());
+    timestamp.setText(value.getTimestamp());
+    icon.setImageResource(value.getImageResource());
+    progress.setProgress(value.getProgress());
+  } 
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that we have now encapsulated the views being held by the holder
+properly, and we can even mark them final now, since they are
+initialized in the constructor. Furthermore, it is very clear that the
+setup is actually one time setup code. In addition, it is clear what
+kind of data item the ViewHolder is bound to.&lt;/p&gt;
+&lt;p&gt;This gets even more awesome when you look at the &lt;a
+href=&quot;https://developer.android.com/reference/android/widget/Adapter.html#getView(int,
+android.view.View, android.view.ViewGroup)&quot;&gt;&lt;code&gt;getView()&lt;/code&gt;&lt;/a&gt; code
+inside the list.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// Inside the adapter
+public void getView(final int position, final View convertView, final ViewGroup parent) {
+  ViewHolder holder;
+  View boundView = convertView;
+  if (boundView == null) {
+    boundView = LayoutInflater.from(context).inflate(R.layout.row, null);
+    holder = new ViewHolder(boundView);
+  } else {
+    holder = (ViewHolder) boundView.getTag();
+  }
+  holder.bind(getItem(position));
+
+  return boundView;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is so much more readable. It is also abstractable with just a little
+bit more work to allow you to use a custom base list adapter, which
+I will talk about in my next article.&lt;/p&gt;
+&lt;p&gt;As an alternative, one could turn the entire ViewHolder into a view,
+&lt;a
+href=&quot;http://sriramramani.wordpress.com/2012/07/25/infamous-viewholder-pattern/&quot;&gt;as
+suggested in Sriram Ramani&amp;#39;s article&lt;/a&gt; but I tend to favor &lt;a
+href=&quot;http://en.wikipedia.org/wiki/Composition_over_inheritance&quot;&gt;composition
+over inheritance&lt;/a&gt; wherever possible. The ViewHolder doesn&amp;#39;t really
+need any behaviors from View so why inherit?&lt;/p&gt;
+&lt;p&gt;If you go down the inheritance path, you have bound the layout to the
+holder more tightly by inflating inside the holder, and you have added
+an extra layer in the view hierarchy.&lt;/p&gt;
+&lt;p&gt;That is, unless you use a &lt;a
+href=&quot;https://developer.android.com/guide/topics/resources/layout-resource.html#merge-element&quot;&gt;&lt;code&gt;&amp;lt;merge&amp;gt;&lt;/code&gt;&lt;/a&gt;
+tag as the base of your layout file. However, using &lt;a
+href=&quot;https://developer.android.com/guide/topics/resources/layout-resource.html#merge-element&quot;&gt;&lt;code&gt;&amp;lt;merge&amp;gt;&lt;/code&gt;&lt;/a&gt;
+is problematic because the view tools in &lt;a
+href=&quot;http://developer.android.com/sdk/index.html&quot;&gt;Eclipse&lt;/a&gt; and &lt;a
+href=&quot;http://developer.android.com/sdk/installing/studio.html&quot;&gt;Android
+Studio&lt;/a&gt; then can&amp;#39;t validate that your views are going to be
+inflated into a RelativeLayout or a LinearLayout. If you change the
+type the ViewHolder extends you may run into issues with the layout. I
+always prefer when my tools can tell me I am making a mistake.&lt;/p&gt;
+&lt;p&gt;Until next time, try to make your code suck less using the
+&amp;quot;View Holder Pattern Improved.&amp;quot;&lt;/p&gt;
+</content>
+  </entry>
+</feed>
