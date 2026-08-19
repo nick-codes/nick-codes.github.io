@@ -18,6 +18,12 @@ const TITLE = 'Nick Palmer — Fractional CTO & Principal Engineer'
 const DESCRIPTION =
   'Fractional CTO and principal engineer for hire. Architecture, AI strategy, cloud and scaling problems, and rescuing troubled projects.'
 
+const slugify = (s) =>
+  String(s)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+
 const escape = (s) =>
   String(s)
     .replace(/&/g, '&amp;')
@@ -101,6 +107,19 @@ for (const post of posts) {
 }
 
 for (const path of legacyRedirects) {
+  emit(path, pageFor(path, { ...routeMeta['/writing'], canonical: '/writing' }))
+  emitted++
+}
+
+// jekyll-archives published a page per tag and per category. Those paths are
+// dynamic, so enumerate them from the posts themselves rather than hard-coding
+// a list that would drift as posts are added. Each canonicals to /writing, so
+// search consolidates them there instead of treating them as thin duplicates.
+const taxonomy = [
+  ...new Set(posts.flatMap((p) => p.tags.map((t) => `/tag/${slugify(t)}`))),
+  ...new Set(posts.flatMap((p) => p.categories.map((c) => `/category/${slugify(c)}`))),
+]
+for (const path of taxonomy) {
   emit(path, pageFor(path, { ...routeMeta['/writing'], canonical: '/writing' }))
   emitted++
 }
