@@ -1,0 +1,114 @@
+<!doctype html>
+<!--
+  Source for the 1200x630 social card at public/og.jpg.
+
+  This is not part of the site build. Re-render it after editing with a
+  headless browser, e.g.:
+
+    npx playwright screenshot --viewport-size=1200,630 \
+      tools/og-card.html public/og.jpg
+
+  The portrait is the Gravatar for nick@sluggardy.net, vendored alongside as
+  og-avatar-source.jpg so the card does not depend on Gravatar being reachable
+  at render time.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        width: 1200px;
+        height: 630px;
+        display: flex;
+        align-items: center;
+        gap: 64px;
+        padding: 0 76px;
+        background: #14161a;
+        font-family: 'Inter', system-ui, sans-serif;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Faint accent wash bleeding in from the right, so the flat dark panel
+         has some depth without competing with the text. */
+      body::after {
+        content: '';
+        position: absolute;
+        top: -220px;
+        right: -220px;
+        width: 700px;
+        height: 700px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(28, 93, 153, 0.5), transparent 68%);
+      }
+
+      .portrait {
+        flex: 0 0 296px;
+        width: 296px;
+        height: 296px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      }
+
+      .body { position: relative; z-index: 1; }
+
+      .eyebrow {
+        font-size: 19px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #7fb2e0;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: 74px;
+        font-weight: 700;
+        line-height: 1.04;
+        letter-spacing: -0.025em;
+        color: #ffffff;
+      }
+
+      .tagline {
+        margin-top: 22px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+        font-size: 27px;
+        line-height: 1.4;
+        color: rgba(255, 255, 255, 0.74);
+        max-width: 620px;
+      }
+
+      .domain {
+        position: absolute;
+        left: 76px;
+        bottom: 46px;
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 21px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .domain span { color: #7fb2e0; }
+    </style>
+  </head>
+  <body>
+    <img class="portrait" src="./og-avatar-source.jpg" alt="" />
+    <div class="body">
+      <p class="eyebrow">Fractional CTO &amp; Principal Engineer</p>
+      <h1>Nick Palmer</h1>
+      <p class="tagline">
+        Senior technical leadership, without the full-time hire.
+      </p>
+    </div>
+    <p class="domain"><span>&gt;</span> nick.codes</p>
+  </body>
+</html>
